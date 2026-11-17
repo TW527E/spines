@@ -108,11 +108,17 @@ describe('/badge', () => {
   it('has a mark and a color for every preset', () => {
     expect(presets.length).toBeGreaterThan(80)
     for (const p of presets) {
-      expect(p.icon.path, p.slug).toMatch(/^[Mm]/)
+      if (p.icon.slug !== 'none') expect(p.icon.path, p.slug).toMatch(/^[Mm]/)
       expect(p.icon.hex, p.slug).toMatch(/^[0-9A-F]{6}$/)
     }
     expect(new Set(presets.map((p) => p.slug)).size).toBe(presets.length)
     expect(preset('K8S')?.slug).toBe('kubernetes')
+  })
+
+  it('typesets an entry Simple Icons has no mark for', async () => {
+    const response = await get('/badge/minecraft.svg')
+    expect(response.status).toBe(200)
+    expect(await response.text()).toContain('aria-label="Minecraft"')
   })
 })
 

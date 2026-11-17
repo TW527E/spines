@@ -9,10 +9,11 @@
  */
 import { mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 import { preset, presets } from '../src/presets.ts'
 
-const root = new URL('../../../', import.meta.url).pathname
+const root = fileURLToPath(new URL('../../../', import.meta.url))
 const source = join(root, 'art')
 const target = join(root, 'apps/web/public/art')
 const HEIGHT = 720
@@ -83,6 +84,10 @@ ${wanted('ai')}
 ## Tech stack
 
 ${wanted('stack')}
+
+## Games & VR
+
+${wanted('games')}
 `.replace(/\s*$/, '\n'),
 )
 

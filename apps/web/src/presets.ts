@@ -60,6 +60,7 @@ import {
   siOllama,
   siOpenjdk,
   siOpenrouter,
+  siOsu,
   siPerplexity,
   siPhp,
   siPnpm,
@@ -86,6 +87,7 @@ import {
   siV0,
   siVercel,
   siVite,
+  siVrchat,
   siVuedotjs,
   siWarp,
   siWebassembly,
@@ -93,6 +95,7 @@ import {
   siZedindustries,
   siZig,
 } from 'simple-icons'
+import { lunlunsworld } from './marks/lunlunsworld.ts'
 
 /**
  * The catalog of common AI tools and tech stacks, used like shields.io badges:
@@ -109,18 +112,18 @@ export interface Preset {
   slug: string
   title: string
   /** Also the folder under `art/` that holds its print. */
-  group: 'ai' | 'stack'
+  group: 'ai' | 'stack' | 'games'
   theme: ThemeId
-  icon: SimpleIcon
+  icon: Mark
   paint?: 'paper' | 'accent'
 }
 
-type Row = [
-  icon: SimpleIcon,
-  theme: ThemeId,
-  paint?: 'paper' | 'accent' | undefined,
-  title?: string,
-]
+type Row = [icon: Mark, theme: ThemeId, paint?: 'paper' | 'accent' | undefined, title?: string]
+
+/** A mark Simple Icons lacks; with no `path` the entry is typeset bare. `box` is its viewBox. */
+type Mark = SimpleIcon & { box?: number }
+const own = (title: string, hex: string, slug = 'none', path = '', box?: number) =>
+  ({ title, hex, slug, path, box, svg: '', source: '' }) as Mark
 
 const rows: Record<Preset['group'], Record<string, Row>> = {
   ai: {
@@ -218,6 +221,17 @@ const rows: Record<Preset['group'], Record<string, Row>> = {
     apple: [siApple, 'steel'],
     android: [siAndroid, 'grid', 'accent'],
   },
+  games: {
+    osu: [siOsu, 'candy', 'paper'],
+    minecraft: [own('Minecraft', '5B8731'), 'clay', 'paper'],
+    vrchat: [siVrchat, 'noir'],
+    rebocap: [own('Rebocap', '000000'), 'steel'],
+    lunlunsworld: [
+      own("Lunlun's World", 'FFD2E1', 'lunlunsworld', lunlunsworld, 1080),
+      'candy',
+      'paper',
+    ],
+  },
 }
 
 export const presets: Preset[] = (Object.keys(rows) as Preset['group'][]).flatMap((group) =>
@@ -257,6 +271,8 @@ const aliases: Record<string, string> = {
   zed: 'zedindustries',
   nvim: 'neovim',
   hf: 'huggingface',
+  mc: 'minecraft',
+  lunlun: 'lunlunsworld',
 }
 
 /** The short names that lead to a preset, so search can find it by them too. */
@@ -270,6 +286,7 @@ export function preset(slug: string): Preset | undefined {
 }
 
 /** A bundled Simple Icons mark by slug, so presets' marks need no network. */
-export function bundledIcon(slug: string): SimpleIcon | undefined {
-  return preset(slug)?.icon
+export function bundledIcon(slug: string): Mark | undefined {
+  const mark = preset(slug)?.icon
+  return mark?.path ? mark : undefined
 }

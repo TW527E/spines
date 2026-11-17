@@ -15,7 +15,13 @@ const MAX_REPOS = 12
 const LYING = { layout: 'stack', size: 420 }
 const STANDING = { layout: 'row', size: 480 }
 
-const groupNames = { ai: 'AI', models: 'Models', stack: 'Stack', projects: 'Projects' }
+const groupNames = {
+  ai: 'AI',
+  models: 'Models',
+  stack: 'Stack',
+  games: 'Games & VR',
+  projects: 'Projects',
+}
 
 const state = {
   mode: 'shelf',
