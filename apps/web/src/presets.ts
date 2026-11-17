@@ -226,7 +226,7 @@ const rows: Record<Preset['group'], Record<string, Row>> = {
   games: {
     osu: [siOsu, 'candy', 'paper'],
     minecraft: [own('Minecraft', '3FAE30', 'minecraft', minecraft, 960), 'clay', 'paper'],
-    vrchat: [own('VRChat', '000000', 'vrchat', vrchat, 280), 'noir'],
+    vrchat: [own('VRChat', '000000', 'vrchat', vrchat, 280), 'steel'],
     rebocap: [own('Rebocap', 'D373AA', 'rebocap', rebocap, 50), 'midnight', 'accent'],
     lunlunsworld: [
       own("Lunlun's World", 'FFD2E1', 'lunlunsworld', lunlunsworld, 1080),
