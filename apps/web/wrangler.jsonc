@@ -12,6 +12,9 @@
   // Each deploy gets a new id; it is part of every cache key, so a deploy
   // never serves spines drawn by the previous renderer.
   "version_metadata": { "binding": "VERSION" },
+  // GitHub answers this zone's requests with 525, so reads go through
+  // github-relay on workers.dev. Deploy it first; both hold the RELAY_KEY secret.
+  "vars": { "GITHUB_RELAY": "https://spines-github.tw527e.workers.dev" },
   "observability": { "enabled": true }
   // Optional: `wrangler secret put GITHUB_TOKEN` lifts the GitHub API limit
   // from 60 to 5,000 requests an hour. A token with no scopes is enough.

@@ -80,12 +80,13 @@ function slim(r: ApiRepo): Repo {
 }
 
 async function api<T>(path: string, env: Env): Promise<T> {
-  const response = await fetch(`https://api.github.com${path}`, {
+  const response = await fetch(`${env.GITHUB_RELAY ?? 'https://api.github.com'}${path}`, {
     headers: {
       accept: 'application/vnd.github+json',
       'user-agent': 'spine-badges',
       'x-github-api-version': '2022-11-28',
       ...(env.GITHUB_TOKEN ? { authorization: `Bearer ${env.GITHUB_TOKEN}` } : {}),
+      ...(env.RELAY_KEY ? { 'x-relay-key': env.RELAY_KEY } : {}),
     },
   })
   if (response.status === 404) throw new HttpError(404, 'not found on GitHub')

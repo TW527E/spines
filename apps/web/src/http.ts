@@ -5,6 +5,10 @@ export interface Env {
   VERSION?: { id: string }
   /** Optional; raises the GitHub API limit. */
   GITHUB_TOKEN?: string
+  /** Optional stand-in for https://api.github.com; see github-relay/. */
+  GITHUB_RELAY?: string
+  /** Shared with the relay, so only this Worker can use it. */
+  RELAY_KEY?: string
 }
 
 /** A failure the caller should see, drawn onto a spine with this status. */

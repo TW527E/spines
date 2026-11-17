@@ -112,6 +112,12 @@ so set the same `GTM_ID` under the Worker's **Settings → Builds → Variables 
 secrets** too (and update both when changing the container). For a local deploy:
 `GTM_ID="$(gh variable get GTM_ID --repo stvlynn/spines)" pnpm run deploy`.
 
+GitHub answers this zone's Worker requests with 525, so GitHub routes go
+through [`apps/web/github-relay`](apps/web/github-relay), a second Worker on
+workers.dev. Deploy it first with
+`pnpm --filter @repo/web exec wrangler deploy --config github-relay/wrangler.jsonc`,
+and give both Workers the same `RELAY_KEY` secret.
+
 GitHub routes read the GitHub API without a token, which allows 60 requests an
 hour. To raise that to 5,000, store a token with no scopes:
 

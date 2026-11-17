@@ -1,0 +1,9 @@
+{
+  "name": "spines-github",
+  "account_id": "be906dd9559bb28daba2e24a9e080f93",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": true,
+  "preview_urls": false
+  // Secret: RELAY_KEY, the same value as the spines Worker's.
+}
