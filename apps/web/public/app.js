@@ -240,6 +240,18 @@ function thumb(entry) {
         height,
       }),
     )
+  } else if (entry.kind === 'badge') {
+    // Not drawn yet: show the typeset badge, which already lies down.
+    box.style.setProperty('--ratio', String(1 / 12))
+    box.append(
+      el('img', {
+        src: `/badge/${entry.slug}.svg`,
+        className: 'typeset',
+        alt: '',
+        loading: 'lazy',
+        decoding: 'async',
+      }),
+    )
   }
   return box
 }

@@ -13,8 +13,13 @@ const CDN = 'https://cdn.jsdelivr.net/npm/simple-icons@16/icons'
 export async function icon(slug: string | undefined): Promise<Icon | undefined> {
   if (!slug || !/^[a-z0-9_]{1,40}$/.test(slug)) return undefined
   const bundled = bundledIcon(slug)
-  if (bundled)
-    return bundled.box ? { path: bundled.path, box: bundled.box } : { path: bundled.path }
+  if (bundled) {
+    return {
+      path: bundled.path,
+      ...(bundled.box ? { box: bundled.box } : {}),
+      ...(bundled.evenodd ? { evenodd: true } : {}),
+    }
+  }
   const path = await remember(`icon/${slug}`, 30 * 24 * 3600, async () => {
     const response = await fetch(`${CDN}/${slug}.svg`).catch(() => undefined)
     if (!response?.ok) return ''

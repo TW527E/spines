@@ -16,6 +16,8 @@ export interface Icon {
   path: string
   /** Side of the square viewBox the path was drawn in. Defaults to 24. */
   box?: number
+  /** Fill with the even-odd rule, for traced line art whose holes share a winding. */
+  evenodd?: boolean
 }
 
 /** A spine typeset by the renderer. */
@@ -101,7 +103,7 @@ export function draw(item: Item, id: string): Drawn {
   if (item.icon && /^[\sMmZzLlHhVvCcSsQqTtAa0-9eE,.+-]+$/.test(item.icon.path)) {
     const size = h * 0.56
     const scale = size / (item.icon.box ?? 24)
-    icon = `<path fill="${ink}" transform="translate(${n(pen)} ${n(mid - size / 2)}) scale(${scale.toFixed(4)})" d="${item.icon.path}"/>`
+    icon = `<path fill="${ink}"${item.icon.evenodd ? ' fill-rule="evenodd"' : ''} transform="translate(${n(pen)} ${n(mid - size / 2)}) scale(${scale.toFixed(4)})" d="${item.icon.path}"/>`
     pen += size + h * 0.3
   }
 

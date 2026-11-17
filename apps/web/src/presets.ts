@@ -5,6 +5,7 @@ import {
   siAngular,
   siAnthropic,
   siApple,
+  siArchlinux,
   siAstro,
   siBun,
   siClaude,
@@ -17,6 +18,7 @@ import {
   siDeepseek,
   siDeno,
   siDify,
+  siDiscord,
   siDjango,
   siDocker,
   siDotnet,
@@ -57,6 +59,7 @@ import {
   siNotion,
   siNuxt,
   siObsidian,
+  siOculus,
   siOllama,
   siOpenjdk,
   siOpenrouter,
@@ -80,7 +83,9 @@ import {
   siSvelte,
   siSwift,
   siTailwindcss,
+  siTampermonkey,
   siTauri,
+  siTelegram,
   siTensorflow,
   siTerraform,
   siTypescript,
@@ -91,6 +96,7 @@ import {
   siWarp,
   siWebassembly,
   siWindsurf,
+  siWordpress,
   siZedindustries,
   siZig,
 } from 'simple-icons'
@@ -98,6 +104,7 @@ import { lunlunsworld } from './marks/lunlunsworld.ts'
 import { minecraft } from './marks/minecraft.ts'
 import { rebocap } from './marks/rebocap.ts'
 import { vrchat } from './marks/vrchat.ts'
+import { wivrn } from './marks/wivrn.ts'
 
 /**
  * The catalog of common AI tools and tech stacks, used like shields.io badges:
@@ -123,9 +130,15 @@ export interface Preset {
 type Row = [icon: Mark, theme: ThemeId, paint?: 'paper' | 'accent' | undefined, title?: string]
 
 /** A mark Simple Icons lacks; with no `path` the entry is typeset bare. `box` is its viewBox. */
-type Mark = SimpleIcon & { box?: number }
-const own = (title: string, hex: string, slug = 'none', path = '', box?: number) =>
-  ({ title, hex, slug, path, box, svg: '', source: '' }) as Mark
+type Mark = SimpleIcon & { box?: number; evenodd?: boolean }
+const own = (
+  title: string,
+  hex: string,
+  slug = 'none',
+  path = '',
+  box?: number,
+  evenodd?: boolean,
+) => ({ title, hex, slug, path, box, evenodd, svg: '', source: '' }) as Mark
 
 const rows: Record<Preset['group'], Record<string, Row>> = {
   ai: {
@@ -222,6 +235,11 @@ const rows: Record<Preset['group'], Record<string, Row>> = {
     ghostty: [siGhostty, 'midnight', 'paper'],
     apple: [siApple, 'steel'],
     android: [siAndroid, 'grid', 'accent'],
+    archlinux: [siArchlinux, 'grid', 'accent'],
+    tampermonkey: [siTampermonkey, 'midnight', 'paper'],
+    telegram: [siTelegram, 'signal', 'paper'],
+    discord: [siDiscord, 'candy', 'paper'],
+    wordpress: [siWordpress, 'paper', 'accent'],
   },
   games: {
     osu: [siOsu, 'candy', 'paper'],
@@ -233,6 +251,8 @@ const rows: Record<Preset['group'], Record<string, Row>> = {
       'candy',
       'paper',
     ],
+    wivrn: [own('WiVRn', 'FE6901', 'wivrn', wivrn, 400, true), 'clay', 'paper'],
+    oculus: [siOculus, 'steel', undefined, 'Oculus Quest'],
   },
 }
 
@@ -275,6 +295,9 @@ const aliases: Record<string, string> = {
   hf: 'huggingface',
   mc: 'minecraft',
   lunlun: 'lunlunsworld',
+  arch: 'archlinux',
+  tg: 'telegram',
+  quest: 'oculus',
 }
 
 /** The short names that lead to a preset, so search can find it by them too. */
