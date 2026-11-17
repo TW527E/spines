@@ -1,8 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "spines",
-  "account_id": "cd649aedbd3b02589e9eab812c0944d3",
-  "routes": [{ "pattern": "spine.stv.pm", "custom_domain": true }],
+  "account_id": "be906dd9559bb28daba2e24a9e080f93",
+  "routes": [{ "pattern": "spine.tw527e.zip", "custom_domain": true }],
   "main": "src/index.ts",
   "build": { "command": "node scripts/build-site.ts" },
   "compatibility_date": "2026-11-01",

